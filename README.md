@@ -17,3 +17,10 @@ type in: control
 In the control panel, click on Sound
 Under the Recording tab, set "CABLE Output" as the default device.
 Note: In the Playback tab, you'll see "CABLE Input"
+
+3. Ensure ALSL is properly installed:  sudo apt-get install alsa-utils
+
+
+____________________
+ctrl+shift+p
+Then: select python interpretor
