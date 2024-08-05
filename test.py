@@ -3,7 +3,6 @@ import wave
 
 # Parameters
 FORMAT = pyaudio.paInt16  # Format of audio
-CHANNELS = 2  # Number of audio channels (stereo)
 RATE = 44100  # Sampling rate (44.1kHz)
 CHUNK = 1024  # Size of each audio chunk
 RECORD_SECONDS = 10  # Duration to record
@@ -12,9 +11,23 @@ WAVE_OUTPUT_FILENAME = "output.wav"  # Output file name
 # Initialize PyAudio
 audio = pyaudio.PyAudio()
 
+DEVICE_INDEX = 62
+# Device 62: CABLE Output (VB-Audio Virtual Cable)
+# Max input channels: 2
+
+# Get Channels
+device_info = audio.get_device_info_by_index(DEVICE_INDEX)
+CHANNELS = device_info["maxInputChannels"]  # Number of audio channels (stereo)
+
+
 # Open stream with the virtual audio device
 stream = audio.open(
-    format=FORMAT, channels=CHANNELS, rate=RATE, input=True, frames_per_buffer=CHUNK
+    format=FORMAT,
+    channels=CHANNELS,
+    rate=RATE,
+    input=True,
+    frames_per_buffer=CHUNK,
+    input_device_index=DEVICE_INDEX,
 )
 
 print("Recording...")
