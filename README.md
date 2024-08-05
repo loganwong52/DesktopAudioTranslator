@@ -24,3 +24,4 @@ Note: In the Playback tab, you'll see "CABLE Input"
 ____________________
 ctrl+shift+p
 Then: select python interpretor
+Set it to anaconda

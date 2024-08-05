@@ -22,7 +22,8 @@ try:
 
         try:
             # Recognize speech using Google Web Speech API, set language to French
-            text = recognizer.recognize_google(audio_data, language="fr-FR")
+            # text = recognizer.recognize_google(audio_data, language="fr-FR")
+            text = recognizer.recognize_google(audio_data, language="en")
             print("Vous avez dit: " + text)
         except sr.UnknownValueError:
             print("Google Web Speech could not understand audio")
