@@ -1,3 +1,8 @@
+"""
+Author: Logan Wong
+8/5/2024
+"""
+
 import speech_recognition as sr
 
 

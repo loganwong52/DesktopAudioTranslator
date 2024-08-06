@@ -1,3 +1,8 @@
+"""
+Author: Logan Wong
+8/6/2024
+"""
+
 import speech_recognition as sr
 import threading
 from googletrans import Translator
@@ -24,6 +29,9 @@ def set_language(lang):
 
 
 def translate_text(language, text, translator):
+    """
+    Takes in french or japanese text and translates it into English
+    """
     # print(f"Original: {text}")
     src = ""
     if language.lower().startswith("f"):

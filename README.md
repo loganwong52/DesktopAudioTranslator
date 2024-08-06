@@ -1,4 +1,8 @@
 # DesktopAudioTranslator
+The main file to run is live_transcribe_audio.py
+
+
+_________________
 1. Installing pyaudio SpeechRecognition:
 sudo apt-get update
 sudo apt-get install python3-pyaudio python3-dev build-essential
