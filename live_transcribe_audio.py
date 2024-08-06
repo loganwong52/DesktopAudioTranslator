@@ -108,6 +108,19 @@ def live_transcribe(device_index, lang):
             print("Stopping...")
 
 
-# Run live transcription with the correct device index
-# live_transcribe(device_index=1, lang="e")
-live_transcribe(device_index=1, lang="f")
+def ask_user_for_lang():
+    lang = input(
+        "What language will your audio be in?\nEnglish = e\nFrench = f\nJapanse = j\n"
+    )
+    if lang not in ["e", "f", "j"]:
+        lang = "e"
+    # print(lang)
+    return lang
+
+
+if __name__ == "__main__":
+    # Prompt user to enter e, j, or f
+    lang = ask_user_for_lang()
+
+    # Run live transcription with the correct device index
+    live_transcribe(device_index=1, lang=lang)
