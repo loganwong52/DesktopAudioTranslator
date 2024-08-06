@@ -1,7 +1,36 @@
 import speech_recognition as sr
 
 
-def live_transcribe(device_index):
+def set_language(lang):
+    """
+    Takes in an abreviated language,
+    returns the language code for Google Translate
+    """
+    # Language codes:
+    # https://www.science.co.il/language/Locale-codes.php
+    language = ""
+    if lang == "Fr" or lang == "fr" or lang == "f":
+        language = "fr-fr"
+    elif lang == "j":
+        language = "ja"
+    elif lang == "e":
+        language = "en-us"
+    else:
+        print("Your entered language is unrecognized. Set to English by Default")
+        language = "en-us"
+    return language
+
+
+def live_transcribe(device_index, lang):
+    """
+    Listens to a given audio device for a given language.
+    Live transcribes any speech that is heard in the terminal.
+
+    device_index: int that is the index of the audio device to listen to
+    lang: string abreviation, either e, f, or j
+    """
+    language = set_language(lang)
+
     # Initialize recognizer
     recognizer = sr.Recognizer()
 
@@ -15,7 +44,8 @@ def live_transcribe(device_index):
             try:
                 audio = recognizer.listen(source)
                 # Recognize speech using Google Web Speech API
-                text = recognizer.recognize_google(audio)
+                text = recognizer.recognize_google(audio, language=language)
+
                 print(f"Transcription: {text}")
             except sr.UnknownValueError:
                 print("Sorry, I could not understand the audio.")
@@ -23,5 +53,5 @@ def live_transcribe(device_index):
                 print("Sorry, there was an error with the request.")
 
 
-# Run live transcription with the correct device index (replace 62 with your device index)
-live_transcribe(device_index=62)
+# Run live transcription with the correct device index
+live_transcribe(device_index=4)
