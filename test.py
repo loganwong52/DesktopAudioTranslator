@@ -7,7 +7,7 @@ DEVICE_INDEX = 4
 FORMAT = pyaudio.paInt16  # Format of audio
 # CHUNK = 2048  # Size of each audio chunk
 CHUNK = 1024
-RECORD_SECONDS = 10  # Duration to record
+RECORD_SECONDS = 5  # Duration to record
 WAVE_OUTPUT_FILENAME = "output.wav"  # Output file name
 
 # Initialize PyAudio
@@ -15,7 +15,8 @@ audio = pyaudio.PyAudio()
 
 # Get Channels
 device_info = audio.get_device_info_by_index(DEVICE_INDEX)
-CHANNELS = device_info["maxInputChannels"]  # Number of audio channels (stereo)
+CHANNELS = 1
+# device_info["maxInputChannels"]  # Number of audio channels (stereo)
 RATE = int(device_info["defaultSampleRate"])  # Sampling rate (44.1kHz)
 
 
