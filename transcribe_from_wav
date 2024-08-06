@@ -24,7 +24,7 @@ def transcribe_audio_file(file_path):
 
 
 # Path to your WAV file
-file_path = "path_to_your_audio_file.wav"
+file_path = "output.wav"
 
 # Run transcription on the specified audio file
-transcribe_audio_file("output.wav")
+transcribe_audio_file(file_path)

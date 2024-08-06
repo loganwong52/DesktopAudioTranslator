@@ -4,10 +4,15 @@ import speech_recognition as sr
 # Initialize recognizer and PyAudio
 recognizer = sr.Recognizer()
 p = pyaudio.PyAudio()
+device_index = 4
 
 # Open the stream using the default input device (e.g., microphone)
 stream = p.open(
-    format=pyaudio.paInt16, channels=1, rate=44100, input=True, frames_per_buffer=1024
+    format=pyaudio.paInt16,
+    channels=1,
+    rate=44100,
+    input=True,
+    frames_per_buffer=1024,
 )
 
 print("Listening...")

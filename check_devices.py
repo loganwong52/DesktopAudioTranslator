@@ -14,8 +14,9 @@ def list_all_available_audio_devices():
 # Voicemeeter Input? NO
 # Voicemeeter Out A2? NO
 # Voicemeeter Out A1? NO
-# "CABLE Output" instead does work...
-# 4, 28, 62, 105
+# "CABLE Output" NO
+# Voicemeeter Out A5: 4, 28, 61
+# Voicemeeter Out B1: 1, 25, 64
 
 
 def get_info_about_device(device_index):
@@ -27,7 +28,7 @@ def get_info_about_device(device_index):
     print(f"Max input channels: {device_info['maxInputChannels']}")
 
 
-def list_audio_devices():
+def list_some_audio_devices():
     print("Available audio devices:")
     for i in range(audio.get_device_count()):
         device_info = audio.get_device_info_by_index(i)
@@ -64,10 +65,10 @@ def display_info_given_device_index(device_index):
             return
 
 
-# list_all_available_audio_devices()
+list_all_available_audio_devices()
 # get_info_about_device(4)
-# list_audio_devices()
-display_info_given_device_index(4)
+# list_some_audio_devices()
+# display_info_given_device_index(4)
 
 
 # Terminate PyAudio instance

@@ -25,18 +25,22 @@ Set it to anaconda
 
 _______________________
 Setting up the sound correctly so this program can pick it up.
-1. In VoiceMeeter, set A1 to headphones
+1. In VoiceMeeter, set A1 to Headphones. Set A2 to CABLE Input (VB-Audio Virtual Cable).
 
-2. In Computer Settings>System>Sound set Output to 
-Voicemeeter Input and set Input to 
+2. In Computer Settings>System>Sound 
+set Output to Voicemeeter Input and 
+set Input to Voicemeeter Out B1
 
 3. Go to Control Panel > Sound
-
 4. In the Playback tab, set Voicemeeter Input as Default
+5. In the Recording tab, set B1 as Default
 
-5. In the Recording tab, set Voicemeeter Out B1 as Default
+Basically, how this works is, you have to match the Default Recording aka Input audio device
+with whatever device_index you pass into live_transcribe() function in transcribe_audio.py
+
+You can double check the device_index by running check_devices.py
 
 6. Play your video
 
-7. Run Transcribe_audio.py
+7. Run transcribe_audio.py by clicking the triangle
 

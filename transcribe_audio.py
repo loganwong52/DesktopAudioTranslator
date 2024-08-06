@@ -40,18 +40,27 @@ def live_transcribe(device_index, lang):
     ) as source:
         recognizer.adjust_for_ambient_noise(source)
         print("Listening...")
-        while True:
-            try:
-                audio = recognizer.listen(source)
-                # Recognize speech using Google Web Speech API
-                text = recognizer.recognize_google(audio, language=language)
+        try:
+            while True:
+                try:
+                    audio = recognizer.listen(source)
+                    # Recognize speech using Google Web Speech API
+                    text = recognizer.recognize_google(audio, language=language)
 
-                print(f"Transcription: {text}")
-            except sr.UnknownValueError:
-                print("Sorry, I could not understand the audio.")
-            except sr.RequestError:
-                print("Sorry, there was an error with the request.")
+                    print(f"Transcription: {text}")
+                except sr.UnknownValueError:
+                    print("Sorry, I could not understand the audio.")
+                except sr.RequestError:
+                    print("Sorry, there was an error with the request.")
+
+        except KeyboardInterrupt:
+            print("Stopping...")
 
 
 # Run live transcription with the correct device index
-live_transcribe(device_index=4)
+# 1, 25, 64 = Voicemeeter Out B1 (VB-Audio Vo)
+live_transcribe(device_index=1, lang="e")
+
+"""
+The device_index must match the default Recording in Control Panel > Sound
+"""
