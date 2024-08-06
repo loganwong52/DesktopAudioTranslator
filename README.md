@@ -1,7 +1,17 @@
 # DesktopAudioTranslator
 The main file to run is live_transcribe_audio.py
 
+This program can access your desktop audio and transcribe it live.
+It can understand English, and translate French or Japanese into English.
 
+Sadly, it is NOT VERY GOOD at detecting audio. (Garbage in, Garbage Out)
+Also, it doesn't transcribe very quickly, and may miss some words.
+
+So less background noise is good.
+Audio that is slow speech is good.
+
+I thought this would be an ingenius way for me to understand French & Japanese movies with no English subtitles, or French Twitch streamers.
+Sadly, it's quite honestly trash.
 _________________
 1. Installing pyaudio SpeechRecognition:
 sudo apt-get update
