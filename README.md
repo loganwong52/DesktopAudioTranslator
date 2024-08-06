@@ -18,6 +18,9 @@ In the control panel, click on Sound
 Under the Recording tab, set "CABLE Output" as the default device.
 Note: In the Playback tab, you'll see "CABLE Input"
 
+4. pip install googletrans==4.0.0-rc1
+
+
 ____________________
 ctrl+shift+p
 Then: select python interpretor
