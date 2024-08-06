@@ -30,6 +30,8 @@ def live_transcribe(device_index, lang):
     lang: string abreviation, either e, f, or j
     """
     language = set_language(lang)
+    secs_btwn_words = 2
+    timeout = 0.5
 
     # Initialize recognizer
     recognizer = sr.Recognizer()
@@ -38,12 +40,16 @@ def live_transcribe(device_index, lang):
     with sr.Microphone(
         device_index=device_index, sample_rate=44100, chunk_size=2048
     ) as source:
-        recognizer.adjust_for_ambient_noise(source)
+        recognizer.adjust_for_ambient_noise(source, duration=0.75)
+        recognizer.dynamic_energy_threshold = True
+
         print("Listening...")
         try:
             while True:
                 try:
-                    audio = recognizer.listen(source)
+                    audio = recognizer.listen(
+                        source, phrase_time_limit=secs_btwn_words, timeout=timeout
+                    )
                     # Recognize speech using Google Web Speech API
                     text = recognizer.recognize_google(audio, language=language)
 
@@ -52,6 +58,8 @@ def live_transcribe(device_index, lang):
                     print("Sorry, I could not understand the audio.")
                 except sr.RequestError:
                     print("Sorry, there was an error with the request.")
+                except sr.WaitTimeoutError:
+                    print("silence -> timedout")
 
         except KeyboardInterrupt:
             print("Stopping...")
