@@ -17,11 +17,11 @@ def list_all_available_audio_devices():
 # "CABLE Output" NO
 # Voicemeeter Out A5: 4, 28, 61
 # Voicemeeter Out B1: 1, 25, 64
+# Headphones: 13, 37, 51,
 
 
 def get_info_about_device(device_index):
     # Specify the index of the input device
-    device_index = 68  # Replace with the correct index
     # Get the device info
     device_info = audio.get_device_info_by_index(device_index)
     print(f"Device {device_index}: {device_info['name']}")
@@ -70,6 +70,13 @@ list_all_available_audio_devices()
 # list_some_audio_devices()
 # display_info_given_device_index(4)
 
+# I was thinking, maybe I didn't need a VB-audio cable, and maybe I could just
+# connect my headphones to my code, but no, it fails because it has 0 input channels.
+# At least 2 input channels are needed for the code to work...
+# Headphones: 13, 37, 51
+# get_info_about_device(13)
+# get_info_about_device(37)
+# get_info_about_device(51)
 
 # Terminate PyAudio instance
 audio.terminate()
